@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    
+    public int fase;
+    public string fasee;
     public int points ;
     public int totalScore;
     public Text pointer;
     public static GameController gameController;
-    private float segundos;
+    private float segundos=30;
     private int segundosToInt;
     public Text segundosText;
     
@@ -34,6 +35,8 @@ public class GameController : MonoBehaviour
         instance = this;
         
         ShowTotalScore();
+        fase=Random.Range(1,3);
+        fasee=fase.ToString();
     }
 
     // Update is called once per frame
@@ -44,6 +47,9 @@ public class GameController : MonoBehaviour
     public void NextLevel(string lvlName){
      SceneManager.LoadScene(lvlName);
 
+    }
+    public void NextFase(){
+        SceneManager.LoadScene(fasee);
     }
     public void MostrarCorrecao(){
         Correcao.SetActive(true);
@@ -80,10 +86,10 @@ public class GameController : MonoBehaviour
       
     }
     public void Contador(){
-        segundos+=Time.deltaTime;
+        segundos-=Time.deltaTime;
         segundosToInt=(int)segundos;
         segundosText.text=segundosToInt.ToString();
-        if(segundos>=5){
+        if(segundos<=0){
             MostrarCorrecao();
             Destroy(segundosText);
         }
