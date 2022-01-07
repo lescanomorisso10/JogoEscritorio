@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Perguntas : MonoBehaviour
 {
 
     // Start is called before the first frame update
+    
     public  GameObject pergunta1;
     public  GameObject pergunta2;
     public static Perguntas perguntas;
@@ -30,4 +32,7 @@ public class Perguntas : MonoBehaviour
     public void Resposta2(){
         pergunta=false;
     }
+   
+    
+
 }
